@@ -3,6 +3,14 @@ import './App.css';
 
 
 class App extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            showing: 0
+        }
+    }
+
     rulesData = [
         {
             action: "Implement Serializable interface in this DTO",
@@ -267,6 +275,12 @@ public AuthorDTO getAuthor(@PathParam("authorId") Long id) {
         },
     ];
 
+    componentDidMount() {
+        this.setState({
+            showing: parseInt(window.location.hash.charAt( window.location.hash.length - 1))
+        })
+    }
+
     render() {
         return (
             <div className="App container">
@@ -277,13 +291,13 @@ public AuthorDTO getAuthor(@PathParam("authorId") Long id) {
                             <div className="card-header" id={"heading" + id}>
                                 <h4 className="mb-0 container">
                                     <button className="btn" type="button" data-toggle="collapse"
-                                            data-target={"#collapse" + id} aria-expanded={id === 0 ? "true" : "false"}
+                                            data-target={"#collapse" + id} aria-expanded={id === this.state.showing ? "true" : "false"}
                                             aria-controls={"#collapse" + id}>
                                         <strong>R{id + 1}:</strong> <em>{rule.title}</em>
                                     </button>
                                 </h4>
                             </div>
-                            <div id={"collapse" + id} className={"collapse " + (id === 0 ? "show" : "")}
+                            <div id={"collapse" + id} className={"collapse " + (id === this.state.showing ? "show" : "")}
                                  aria-labelledby={"heading" + id}
                                  data-parent="#accordion">
                                 <div className="card-body">
