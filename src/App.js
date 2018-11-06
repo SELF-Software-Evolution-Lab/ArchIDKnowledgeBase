@@ -164,7 +164,7 @@ public class AuthorResource {
     ...
 }`,
             debt: 10,
-            description: "Resources must have a Path annotation defining the path to the resource.",
+            description: "Resources must have a Path annotation defining the path to the resource. This does not apply to subresources.",
             nonCompliantExample: `@Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class AuthorResource {
