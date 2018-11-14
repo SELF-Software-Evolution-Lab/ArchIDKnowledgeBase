@@ -270,9 +270,27 @@ public AuthorDTO getAuthor(@PathParam("authorId") Long id) {
     return new AuthorDTO(entity);
 }`,
             severity: "MINOR",
-            structuralElement: "logic",
+            structuralElement: "services",
             title: "Resource methods must check for existence of entity and throw WebApplicationException in case"
         },
+        {
+            action: "Make this resource GET method return a DetailDTO or list of them",
+            compliantSolution: `@GET
+@Path("{id : + \\\\d+")
+public BlogDetailDTO getBlog(@PathParam("id") Long id) {
+    ...
+}`,
+            debt: 10,
+            description: "Resource GET methods must return DetailDTOs so the information is properly displayed in the frontend. Returning non-Detail DTOs can cause certain information to not appear.",
+            nonCompliantExample: `@GET
+@Path("{id : + \\\\d+")
+public BlogDTO getBlog(@PathParam("id") Long id) {
+    ...
+}`,
+            severity: "MAJOR",
+            structuralElement: "services",
+            title: "Resource GET methods must return DetailDTOs so their info is properly displayed."
+        }
     ];
 
     componentDidMount() {
