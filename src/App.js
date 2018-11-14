@@ -289,7 +289,7 @@ public BlogDTO getBlog(@PathParam("id") Long id) {
 }`,
             severity: "MAJOR",
             structuralElement: "services",
-            title: "Resource GET methods must return DetailDTOs so their info is properly displayed."
+            title: "Resource GET methods must return DetailDTOs so their info is properly displayed"
         }
     ];
 
