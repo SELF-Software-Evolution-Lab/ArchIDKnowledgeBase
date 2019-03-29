@@ -290,6 +290,24 @@ public BlogDTO getBlog(@PathParam("id") Long id) {
             severity: "MAJOR",
             structuralElement: "services",
             title: "Resource GET methods must return DetailDTOs so their info is properly displayed"
+        },
+        {
+            action: "Edit or remove non-serializable types on getters and setters on DTOs.",
+            compliantSolution: `private Boolean loggedIn;
+...
+public void setLoggedIn(Boolean loggedIn) {
+    ...
+}`,
+            debt: 15,
+            description: "Getters and setters in DTOs must only manage serializable types. Do not use primitive types on these methods.",
+            nonCompliantExample: `private Boolean loggedIn;
+...
+public void setLoggedIn(boolean loggedIn) {
+    ...
+}`,
+            severity: "MAJOR",
+            structuralElement: "dtos",
+            title: "Getters and setters on DTOs must manage serializable types only"
         }
     ];
 
