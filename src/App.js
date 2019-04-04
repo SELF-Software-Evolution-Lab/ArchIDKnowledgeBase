@@ -313,7 +313,7 @@ public void setLoggedIn(boolean loggedIn) {
 
     componentDidMount() {
         this.setState({
-            showing: parseInt(window.location.hash.charAt( window.location.hash.length - 1))
+            showing: parseInt(window.location.hash.substring(window.location.hash.search("collapse") + "collapse".length))
         })
     }
 
